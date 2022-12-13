@@ -1,0 +1,6 @@
+framework module Pods_mandiri_technical {
+  umbrella header "Pods-mandiri-technical-umbrella.h"
+
+  export *
+  module * { export * }
+}
