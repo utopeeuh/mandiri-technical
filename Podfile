@@ -7,7 +7,9 @@ target 'mandiri-technical' do
 
   # Pods for mandiri-technical
   pod 'SnapKit'
+  pod 'TMDBSwift'
   pod 'Alamofire'
-  pod 'Kingfisher'
-  pod "TMDBSwift"
+  pod 'AlamofireImage'
+  pod 'ESPullToRefresh'
+
 end
