@@ -24,16 +24,18 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         // Home tab
         
         /* Create ui-view-controller instance*/
-        let notice = MovieRouter.createMovieModule()
+        let movieList = MovieRouter.createMovieModule()
         
-        let tabOne = UINavigationController(rootViewController: notice)
-        let tabOneBarItem = UITabBarItem(title: "Home", image: UIImage(named:"Home"), selectedImage: UIImage(named: "HomeFilled"))
+        let tabOne = UINavigationController(rootViewController: movieList)
+        let tabOneBarItem = UITabBarItem(title: "Home", image: UIImage(systemName:"house"), selectedImage: UIImage(systemName:"house.fill"))
         tabOne.tabBarItem = tabOneBarItem
         
+        /* Create ui-view-controller instance*/
+//        let movieList = MovieRouter.createMovieModule()
         
-        // Stats tab
+        // Genres tab
         let tabTwo = UINavigationController(rootViewController: DummyVC())
-        let tabTwoBarItem = UITabBarItem(title: "Statistik", image: UIImage(named:"Stats"), selectedImage: UIImage(named: "StatsFilled"))
+        let tabTwoBarItem = UITabBarItem(title: "Genres", image: UIImage(systemName: "square.stack"), selectedImage: UIImage(systemName: "square.stack.fill"))
         
         tabTwo.tabBarItem = tabTwoBarItem
         

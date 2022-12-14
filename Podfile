@@ -11,5 +11,6 @@ target 'mandiri-technical' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'ESPullToRefresh'
+  pod "youtube-ios-player-helper"
 
 end

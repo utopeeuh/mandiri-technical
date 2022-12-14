@@ -28,4 +28,11 @@ class MovieRouter:PresenterToRouterMovieProtocol{
         
     }
     
+    func pushToMovieDetail(navigationConroller navigationController:UINavigationController, movie: Movie) {
+        
+        let detailModule = MovieDetailRouter.createMovieDetailModule(movie: movie)
+        
+        navigationController.pushViewController(detailModule,animated: true)
+    }
+    
 }

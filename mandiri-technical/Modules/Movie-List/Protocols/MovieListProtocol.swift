@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ViewToPresenterMovieProtocol {
     
@@ -13,7 +14,8 @@ protocol ViewToPresenterMovieProtocol {
     var interactor: PresenterToInteractorMovieProtocol? {get set}
     var router: PresenterToRouterMovieProtocol? {get set}
     func startFetchingMovie(paginate: Bool)
-
+    func showMovieDetailController(navigationController:UINavigationController, movie: Movie)
+    
 }
 
 protocol PresenterToViewMovieProtocol {
@@ -26,6 +28,7 @@ protocol PresenterToViewMovieProtocol {
 protocol PresenterToRouterMovieProtocol {
     
     static func createMovieModule()->MovieListVC
+    func pushToMovieDetail(navigationConroller: UINavigationController, movie: Movie)
 
 }
 

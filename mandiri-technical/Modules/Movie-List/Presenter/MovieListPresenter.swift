@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MoviePresenter:ViewToPresenterMovieProtocol{
     
@@ -17,6 +18,10 @@ class MoviePresenter:ViewToPresenterMovieProtocol{
     
     func startFetchingMovie(paginate: Bool) {
         interactor?.fetchMovie(paginate: paginate)
+    }
+    
+    func showMovieDetailController(navigationController: UINavigationController, movie: Movie) {
+        router?.pushToMovieDetail(navigationConroller: navigationController, movie: movie)
     }
     
 }
