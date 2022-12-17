@@ -13,8 +13,8 @@ protocol ViewToPresenterMovieDetailProtocol {
     var view: PresenterToViewMovieDetailProtocol? {get set}
     var interactor: PresenterToInteractorMovieDetailProtocol? {get set}
     var router: PresenterToRouterMovieDetailProtocol? {get set}
-    func startFetchingReviews(movie: Movie)
-    func startFetchingTrailer(movie: Movie)
+    func startFetchingReviews()
+    func startFetchingTrailer()
 }
 
 protocol PresenterToViewMovieDetailProtocol {
@@ -22,7 +22,7 @@ protocol PresenterToViewMovieDetailProtocol {
     func onReviewsResponseSuccess(reviews: [Review])
     func onReviewsResponseFailed(error:String)
     
-    func onTrailerResponseSuccess(trailer: Trailer)
+    func onTrailerResponseSuccess(trailer: Trailer?)
     func onTrailerResponseFailed(error:String)
     
 }
@@ -35,8 +35,9 @@ protocol PresenterToRouterMovieDetailProtocol {
 protocol PresenterToInteractorMovieDetailProtocol {
     
     var presenter:InteractorToPresenterMovieDetailProtocol? {get set}
-    func fetchReviews(movie: Movie)
-    func fetchTrailer(movie: Movie)
+    var movie:Movie? {get set}
+    func fetchReviews()
+    func fetchTrailer()
     
 }
 
@@ -45,7 +46,7 @@ protocol InteractorToPresenterMovieDetailProtocol {
     func reviewFetchSuccess(reviews: [Review])
     func reviewFetchFailed()
     
-    func trailerFetchSuccess(trailer: Trailer)
+    func trailerFetchSuccess(trailer: Trailer?)
     func trailerFetchFailed()
     
 }

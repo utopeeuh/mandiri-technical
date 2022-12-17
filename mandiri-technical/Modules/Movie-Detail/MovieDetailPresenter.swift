@@ -14,12 +14,12 @@ class MovieDetailPresenter:ViewToPresenterMovieDetailProtocol{
     
     var router: PresenterToRouterMovieDetailProtocol?
     
-    func startFetchingReviews(movie: Movie) {
-        interactor?.fetchReviews(movie: movie)
+    func startFetchingReviews() {
+        interactor?.fetchReviews()
     }
     
-    func startFetchingTrailer(movie: Movie) {
-        
+    func startFetchingTrailer() {
+        interactor?.fetchTrailer()
     }
 }
 
@@ -33,8 +33,8 @@ extension MovieDetailPresenter:InteractorToPresenterMovieDetailProtocol{
         
     }
     
-    func trailerFetchSuccess(trailer: Trailer) {
-        
+    func trailerFetchSuccess(trailer: Trailer?) {
+        view?.onTrailerResponseSuccess(trailer: trailer)
     }
     
     func trailerFetchFailed() {

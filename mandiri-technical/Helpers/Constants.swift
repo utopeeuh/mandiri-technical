@@ -7,16 +7,25 @@
 
 import Foundation
 
-let API_KEY: String = "56026102844ede6f815a58f0c3161603"
-
-let API_MOVIE_LIST:String = "https://api.themoviedb.org/3/movie/top_rated?api_key=\(API_KEY)"
-
-let API_MOVIE: String = "https://api.themoviedb.org/3/movie/"
-//"100/videos?api_key=56026102844ede6f815a58f0c3161603&language=en-US"
-
-// Trailers
-// https://api.themoviedb.org/3/movie/100/videos?api_key=56026102844ede6f815a58f0c3161603&language=en-US
-
-//  Reviews
-// https://api.themoviedb.org/3/movie/11/reviews?api_key=56026102844ede6f815a58f0c3161603&language=en-US
-
+class APIString {
+    
+    private let baseUrl = "https://api.themoviedb.org/3"
+    private let key = "?api_key=56026102844ede6f815a58f0c3161603"
+    private let lang = "&language=en-US"
+    
+    public func genres() -> String{
+        return baseUrl+"/genre/movie/list"+key+lang
+    }
+    
+    public func movieListByGenre(genreId: Int, page: Int) -> String{
+        return baseUrl+"/discover/movie"+key+"&sort_by=popularity.desc&page\(page)&with_genres=\(genreId)"
+    }
+    
+    public func reviews(movieId: Int) -> String {
+        return baseUrl+"/movie/\(movieId)/reviews"+key
+    }
+    
+    public func trailer(movieId:Int) -> String {
+        return baseUrl+"/movie/\(movieId)/videos"+key
+    }
+}

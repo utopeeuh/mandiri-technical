@@ -24,6 +24,7 @@ class MovieDetailRouter:PresenterToRouterMovieDetailProtocol{
         presenter.router = router
         presenter.interactor = interactor
         interactor.presenter = presenter
+        interactor.movie = movie
         
         return view
     }

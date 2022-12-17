@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         /* Setting up the root view-controller as ui-navigation-controller */
-        window?.rootViewController = TabBarVC()
+        let genreModule = GenreRouter.createGenreModule()
+    
+        window?.rootViewController = UINavigationController(rootViewController: genreModule)
         window?.makeKeyAndVisible()
     }
 

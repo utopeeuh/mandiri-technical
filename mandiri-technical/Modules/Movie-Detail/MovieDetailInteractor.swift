@@ -11,9 +11,17 @@ import Alamofire
 class MovieDetailInteractor: PresenterToInteractorMovieDetailProtocol {
     
     var presenter: InteractorToPresenterMovieDetailProtocol?
+    var movie: Movie?
     
-    func fetchReviews(movie: Movie) {
-        AF.request(API_MOVIE+"\(movie.id)/reviews?api_key=\(API_KEY)&language=en-US")
+    var isCalled = false
+    func fetchReviews() {
+        
+        if movie == nil {
+            presenter?.trailerFetchFailed()
+            return
+        }
+        
+        AF.request(APIString().reviews(movieId: movie!.id))
             .validate()
             .responseDecodable(of: ReviewResult.self) { response in
                 guard let results = response.value else {
@@ -24,7 +32,21 @@ class MovieDetailInteractor: PresenterToInteractorMovieDetailProtocol {
           }
     }
     
-    func fetchTrailer(movie: Movie) {
+    func fetchTrailer() {
         
+        if movie == nil {
+            presenter?.trailerFetchFailed()
+            return
+        }
+        
+        AF.request(APIString().trailer(movieId: movie!.id))
+            .validate()
+            .responseDecodable(of: TrailerResult.self) { response in
+                guard let results = response.value else {
+                    self.presenter?.trailerFetchFailed()
+                    return
+                }
+                self.presenter?.trailerFetchSuccess(trailer: results.results.first(where: {$0.site == "YouTube"}))
+          }
     }
 }

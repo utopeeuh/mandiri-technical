@@ -7,10 +7,8 @@ target 'mandiri-technical' do
 
   # Pods for mandiri-technical
   pod 'SnapKit'
-  pod 'TMDBSwift'
   pod 'Alamofire'
-  pod 'AlamofireImage'
-  pod 'ESPullToRefresh'
-  pod "youtube-ios-player-helper"
+  pod 'Kingfisher'
+  pod 'YoutubePlayerView'
 
 end
